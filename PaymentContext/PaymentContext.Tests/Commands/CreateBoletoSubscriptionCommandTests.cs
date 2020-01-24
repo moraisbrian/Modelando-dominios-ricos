@@ -1,4 +1,3 @@
-using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PaymentContext.Domain.Commands;
 using PaymentContext.Domain.Entities;
@@ -10,15 +9,16 @@ namespace PaymentContext.Tests
     [TestClass]
     public class CreateBoletoSubscriptionCommandTests
     {
-        
+        // Red, Green, Refactor
+
         [TestMethod]
-        public void ShouldRerturnErrorWhenNameIsInvalid()
+        public void ShouldReturnErrorWhenNameIsInvalid()
         {
             var command = new CreateBoletoSubscriptionCommand();
-            command.FirstName = "ddd";
+            command.FirstName = "";
+
             command.Validate();
             Assert.AreEqual(false, command.Valid);
         }
-
     }
 }

@@ -7,7 +7,7 @@ namespace PaymentContext.Domain.ValueObjects
     {
         public Email(string address)
         {
-            this.Address = address;
+            Address = address;
 
             AddNotifications(new Contract()
                 .Requires()

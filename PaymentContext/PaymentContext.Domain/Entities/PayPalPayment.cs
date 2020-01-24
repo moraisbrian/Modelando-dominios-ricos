@@ -6,29 +6,25 @@ namespace PaymentContext.Domain.Entities
     public class PayPalPayment : Payment
     {
         public PayPalPayment(
-            string transactionCode,
+            string transactionCode, 
             DateTime paidDate, 
             DateTime expireDate, 
             decimal total, 
             decimal totalPaid, 
-            Document document, 
             string payer, 
+            Document document, 
             Address address, 
-            Email email
-            ) 
-            : base(
-                paidDate,
-                expireDate,
-                total,
-                totalPaid,
-                document,
-                payer,
-                address,
-                email
-                )
+            Email email) : base(
+                paidDate, 
+                expireDate, 
+                total, 
+                totalPaid, 
+                payer, 
+                document, 
+                address, 
+                email)
         {
-            this.TransactionCode = transactionCode;
-
+            TransactionCode = transactionCode;
         }
 
         public string TransactionCode { get; private set; }

@@ -12,25 +12,21 @@ namespace PaymentContext.Domain.Entities
             DateTime expireDate,
             decimal total,
             decimal totalPaid,
-            Document document,
             string payer,
+            Document document,
             Address address,
-            Email email
-            )
-            : base(
+            Email email) : base(
                 paidDate,
                 expireDate,
                 total,
                 totalPaid,
-                document,
                 payer,
+                document,
                 address,
-                email
-                )
+                email)
         {
-            this.BarCode = barCode;
-            this.BoletoNumber = boletoNumber;
-
+            BarCode = barCode;
+            BoletoNumber = boletoNumber;
         }
 
         public string BarCode { get; private set; }

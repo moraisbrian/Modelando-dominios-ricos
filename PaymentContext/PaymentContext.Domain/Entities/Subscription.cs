@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using PaymentContext.Shared.Entities;
 using Flunt.Validations;
+using PaymentContext.Shared.Entities;
 
 namespace PaymentContext.Domain.Entities
 {
@@ -12,12 +12,13 @@ namespace PaymentContext.Domain.Entities
 
         public Subscription(DateTime? expireDate)
         {
-            this.CreateDate = DateTime.Now;
-            this.LastUpdateDate = DateTime.Now;
-            this.ExpireDate = expireDate;
-            this.Active = true;
+            CreateDate = DateTime.Now;
+            LastUpdateDate = DateTime.Now;
+            ExpireDate = expireDate;
+            Active = true;
             _payments = new List<Payment>();
         }
+
         public DateTime CreateDate { get; private set; }
         public DateTime LastUpdateDate { get; private set; }
         public DateTime? ExpireDate { get; private set; }
@@ -31,7 +32,7 @@ namespace PaymentContext.Domain.Entities
                 .IsGreaterThan(DateTime.Now, payment.PaidDate, "Subscription.Payments", "A data do pagamento deve ser futura")
             );
 
-            // if (Valid)
+            // if(Valid) // Só adiciona se for válido
             _payments.Add(payment);
         }
 

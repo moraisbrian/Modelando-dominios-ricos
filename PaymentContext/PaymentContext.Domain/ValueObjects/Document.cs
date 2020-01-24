@@ -8,8 +8,8 @@ namespace PaymentContext.Domain.ValueObjects
     {
         public Document(string number, EDocumentType type)
         {
-            this.Number = number;
-            this.Type = type;
+            Number = number;
+            Type = type;
 
             AddNotifications(new Contract()
                 .Requires()
@@ -17,7 +17,7 @@ namespace PaymentContext.Domain.ValueObjects
             );
         }
 
-        public string Number { get; set; }
+        public string Number { get; private set; }
         public EDocumentType Type { get; private set; }
 
         private bool Validate()

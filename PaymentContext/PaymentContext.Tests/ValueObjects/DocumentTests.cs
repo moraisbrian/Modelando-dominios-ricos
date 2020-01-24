@@ -8,31 +8,37 @@ namespace PaymentContext.Tests
     [TestClass]
     public class DocumentTests
     {
+        // Red, Green, Refactor
+
         [TestMethod]
         public void ShouldReturnErrorWhenCNPJIsInvalid()
         {
-            var doc = new Document("12345", EDocumentType.CNPJ);
+            var doc = new Document("123", EDocumentType.CNPJ);
             Assert.IsTrue(doc.Invalid);
         }
 
         [TestMethod]
         public void ShouldReturnSuccessWhenCNPJIsValid()
         {
-            var doc = new Document("40477640000101", EDocumentType.CNPJ);
+            var doc = new Document("34110468000150", EDocumentType.CNPJ);
             Assert.IsTrue(doc.Valid);
         }
 
         [TestMethod]
-        public void ShouldReturnErrorWhenCPFJIsInvalid()
+        public void ShouldReturnErrorWhenCPFIsInvalid()
         {
-            var doc = new Document("12345", EDocumentType.CPF);
+            var doc = new Document("123", EDocumentType.CPF);
             Assert.IsTrue(doc.Invalid);
         }
 
         [TestMethod]
-        public void ShouldReturnSuccessWhenCPFIsValid()
+        [DataTestMethod]
+        [DataRow("34225545806")]
+        [DataRow("54139739347")]
+        [DataRow("01077284608")]
+        public void ShouldReturnSuccessWhenCPFIsValid(string cpf)
         {
-            var doc = new Document("48824707050", EDocumentType.CPF);
+            var doc = new Document(cpf, EDocumentType.CPF);
             Assert.IsTrue(doc.Valid);
         }
     }
